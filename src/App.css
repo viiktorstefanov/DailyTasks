@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -15,12 +16,90 @@ a {
 }
 
 .App {
+    width: 100vw;
+    height: 100vh;
+    background-color: #845AFC ;
+}
+
+.menu {
     display: flex;
-    gap: 20px;
-    border: 5px solid grey;
-    width: 100%;
+    gap: 100px;
+    width: 50%;
     flex-wrap: wrap;
-    justify-content: center;
-    background-color: rgb(53, 146, 77);
+    padding: 10px 30px;
+    justify-content: space-around;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1B1A41;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border-radius: 4px;
     color: #fff;
 }
+
+.add-task {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 100px;
+    background-color: #1B1A41;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.add-task form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.add-task .input-task{
+    width: 70%;
+    height: 2.5em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-indent: 10px;
+    font-size: 20px;
+    outline: none;
+    background-color: #1B1A41;
+    border-color: #845AFC;
+    border-right: none;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+.add-task .submit-btn {
+    height: 3.2em;
+    background-color: #845AFC;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #1B1A41;
+    border-left: none;
+    width: 20%;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 0;
+    padding-left: 0;
+    cursor: pointer;
+}
+.add-task .submit-btn:hover{
+    opacity: 0.8;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+}
+
