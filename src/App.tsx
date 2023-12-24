@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import "./App.css";
 import Tasks from "./components/Tasks/Tasks";
 
@@ -8,14 +8,27 @@ import AddTask from "./components/AddTask/AddTask";
 import Task from "./components/Task/Task";
 
 function App() {
+  const [tasks, setTasks] = useState<
+    {
+      id: string;
+      title: string;
+      status: { notReady: boolean; inProgress: boolean; done: boolean };
+    }[]
+  >([]);
 
-  const [tasks, setTasks ] = useState<{}[]>([{}]);
-  const [workingTasks, setWorkingTasks ] = useState<{}[]>([{}]);
-  const [doneTasks, setDoneTasks ] = useState<{}[]>([{}]);
+  const deleteTaskHandler = (id: string): void => {
+    setTasks((state) => state.filter((task) => task.id !== id));
+  };
+
+  const addTaskHandler = ( taskTitle : string) : void => {
+    setTasks(state => ([...state, { id: Math.random().toString(),  title: taskTitle, status: {
+      notReady: true, inProgress: false, done: false
+    }}]));
+  }
 
   return (
     <div className="App">
-      <AddTask />
+      <AddTask addTaskHandler={addTaskHandler} />
       <div className="menu">
         <Tasks />
         <Progress />
@@ -23,12 +36,10 @@ function App() {
       </div>
       <div className="task-list">
         <div className="tasks-list">
-          <Task />
+          {tasks.map(item => <Task key={item.id} deleteTaskHandler={deleteTaskHandler} item={item} />)}
         </div>
-        <div className="progress-list">
-        </div>
-        <div className="done-tasks-list">
-        </div>
+        <div className="progress-list"></div>
+        <div className="done-tasks-list"></div>
       </div>
     </div>
   );

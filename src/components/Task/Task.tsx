@@ -1,11 +1,16 @@
 import { FaRegTrashCan } from "react-icons/fa6";
 
-const Task: React.FC = () => {
+type TaskProps = {
+  deleteTaskHandler: (id: string) => void;
+  item: {title : string, id: string};
+};
+
+const Task: React.FC<TaskProps> = ( { deleteTaskHandler, item }) => {
   return (
-    <div className="task">
-      <span>gergre</span>
+    <div className="task" draggable={true}>
+      <span>{item.title}</span>
       <div className="task-icons">
-        <FaRegTrashCan className="delete-icon"/>
+        <FaRegTrashCan className="delete-icon" onClick={() => deleteTaskHandler(item.id)}/>
       </div>
     </div>
   );
